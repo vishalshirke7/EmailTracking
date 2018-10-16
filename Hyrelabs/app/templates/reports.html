@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3 align="center">Reports</h3>
+<div class="container">
+
+        <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>To</th>
+        <th>Subject</th>
+        <th>Message</th>
+        <th>Sent on</th>
+        <th>Opened</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    {% for i in emails %}
+        <tr>
+            <td>{{i.recipient}}</td>
+            <td>{{i.subject}}</td>
+            <td>{{i.message}}</td>
+            <td>{{i.sent_at}}</td>
+            <td>{{i.read}}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+</div>
+{% endblock %}

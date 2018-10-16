@@ -1,0 +1,31 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>Hyrelabs</title>-->
+<!--<style>-->
+    <!--.wrapper {-->
+    <!--text-align: center;-->
+<!--}-->
+
+<!--.button {-->
+    <!--position: absolute;-->
+    <!--top: 50%;-->
+<!--}-->
+
+<!--</style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="wrapper">-->
+    <!--<button class="button"><a href="{{auth_url}}">Login with Google</a></button>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<a href="{{auth_url}}" class="btn btn-primary btn-block" style="padding: 15px 0;">Login with Google</a>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="container" align="center">
+
+        <form  action="{{url_for('views.home')}}" method="post" novalidate="novalidate"﻿ role="form">
+              {{ form.csrf_token }}
+
+              {{ form.recipient.label }}
+              {{ form.recipient }}
+              {% for error in form.recipient.errors %}
+              <li style="color:red;">{{ error }}</li>
+              {% endfor %}
+              {{ form.subject.label }}
+              {{ form.subject }}
+              {% for error in form.subject.errors %}
+              <li style="color:red;">{{ error }}</li>
+              {% endfor %}
+              {{ form.message.label }}
+              {{ form.message }}
+              {% for error in form.message.errors %}
+              <li style="color:red;">{{ error }}</li>
+              {% endfor %}
+              <input type="submit" value="Submit">
+        </form>
+
+    </div>
+
+
+{% endblock %}
+
+
