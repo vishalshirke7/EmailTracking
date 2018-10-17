@@ -1,4 +1,4 @@
-DEBUG = True
+DEBUG = False
 TESTING = False
 SECRET_KEY = b'\xa9||/\x9dp\x1b\x9f'
 CLIENT_ID = ('1010563798082-2gon9gcgq7hegims91cn79ip64akbgcq''.apps.googleusercontent.com')

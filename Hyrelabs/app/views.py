@@ -3,9 +3,9 @@ from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
-from flask import Blueprint, url_for, redirect, render_template, session, request
+from flask import Blueprint, url_for, redirect, render_template, render_template_string, session, request, send_from_directory
 from flask import jsonify, json
-from sqlalchemy import and_
+from sqlalchemy import and_, desc
 import datetime
 from Scripts.Hyrelabs.app.decorators import login_required
 from httplib2 import Http
@@ -16,7 +16,7 @@ from Scripts.Hyrelabs.app.models import User, Email
 from requests_oauthlib import OAuth2Session
 from oauth2client import file, client, tools
 from oauth2client.client import Credentials, OAuth2Credentials, Storage, AccessTokenCredentials
-
+from flask import logging
 from requests.exceptions import HTTPError
 from Scripts.Hyrelabs import config
 from Scripts.Hyrelabs.app.forms import EmailForm
@@ -26,6 +26,11 @@ bp = Blueprint('views', __name__, url_prefix='/')
 
 @bp.context_processor
 def inject_user():
+    """
+    global context to check whether user is logged in
+
+    return:  boolean value indicating user status
+    """
     if 'user_id' in session:
         userid = session['user_id']
         user = User.query.get(int(userid))
@@ -38,21 +43,43 @@ def inject_user():
     }
 
 
+@bp.route('/trackingimage/<path:path>/<path:emailid>')
+def send_image(path, emailid):
+    """
+
+    :param path: path to tracking image stored in static directory.
+    :param emailid: unique id attached to track which email is requesting the tracking image
+    :return: tracking image
+    """
+    email = Email.query.filter_by(id=emailid)
+    email.read += 1
+    db.session.add(email)
+    db.session.commit()
+    return send_from_directory('static', path)
+
+
 @bp.route('/reports', methods=['GET', 'POST'])
 @login_required
 def reports():
+    """
+
+    :return: returns list of sent email for individual user.
+    """
     userid = session['user_id']
-    emails = Email.query.filter_by(sender=userid)
+    emails = Email.query.filter_by(sender=userid).order_by(desc(Email.sent_at))
     return render_template('reports.html', emails=emails)
 
 
 @bp.route('/home', methods=['GET', 'POST'])
 @login_required
 def home():
+    """
+    This function is used to send an email using Gmail API using logged in user's account
+
+    """
     userid = session['user_id']
     user = User.query.get(int(userid))
     form = EmailForm()
-    print("Currently Logged in User ID is ------------------------------>>>>>>>>>>>>   %s" % session['user_id'])
     if request.method == 'POST':
         if form.validate_on_submit():
             email = Email()
@@ -60,9 +87,11 @@ def home():
             email.subject = form.subject.data
             email.message = form.message.data
             email.sender = user.id
-            msg_body = '<html><img src="http://127.0.0.1:5000/static/img.png" width="70" height="70">'+form.message.data+'</html>'
             db.session.add(email)
             db.session.commit()
+            msg_content = form.message.data
+            emailid = email.id
+            msg_body = render_template('email_msg_body.html', msg_content=msg_content, emailid=emailid)
             service = create_service(userid)
             msg = create_message(user.email, form.recipient.data, form.subject.data, msg_body)
             me = 'me'
@@ -74,10 +103,15 @@ def home():
     return render_template('home.html', user=user, form=form)
 
 
-@bp.route('/login', methods=['GET', 'POST'])
+@bp.route('/login')
 def login():
+    """
+    Base function to login a user using google
+
+    :return:
+    """
     if 'user_id' in session.keys():
-        print("   this is to chekc whether user is logged in  ")
+        print("WHy the hell session is not persisting between two tabs")
         return redirect(url_for('views.home'))
     google = OAuth2Session(
         config.CLIENT_ID,
@@ -86,7 +120,6 @@ def login():
     auth_url, state = google.authorization_url(
         config.AUTH_URI, access_type="offline")
     session['oauth_state'] = state
-    print("   this is to chekc which template is being called  ")
     return render_template('login.html', auth_url=auth_url)
 
 
@@ -135,8 +168,14 @@ def send_message(service, user_id, message):
 
 @bp.route('/gCallback')
 def callback():
-    # if current_user is not None and current_user.is_authenticated:
-    #     return redirect(url_for('home'))
+    """
+    Callback method for gmail login. Whenever a user enter credentials for his/her
+    gmail account, the page is redirected using this method for obtaining a access token
+    for making requests to gmail API
+
+    """
+    if 'user_id' in session.keys():
+        return redirect(url_for('home'))
     if 'error' in request.args:
         if request.args.get('error') == 'access_denied':
             return 'You denied access.'
@@ -176,6 +215,10 @@ def callback():
 
 
 def create_service(userid):
+    """
+    :param userid:  currently logged in user
+    :return: gmail api service instance for making gmail api calls (eg. Sending email in this case )
+    """
     user = User.query.get(int(userid))
     data = json.loads(user.tokens)
     credentials = AccessTokenCredentials(data['access_token'], None)
