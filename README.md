@@ -1,7 +1,12 @@
 # EmailTracking
 
-### Tech stack
 
+### _Tech stack used_
+```
+- python/flask
+- SQLalchemy as ORM
+- Mysql
+```
 
 #### Installation
 
@@ -19,8 +24,8 @@ use hyrelabs_db;
 ##### Project dependencies 
 
 1. Create a virtualenv (better to work in virtualenv)  
-`virtualenv env`
-`cd env`
+-`virtualenv env`
+-`cd env`
 2. Add source to repository in the env 
 `cd Hyrelabs`
 `pip install requirements.txt`
