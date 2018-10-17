@@ -276,3 +276,79 @@
 127.0.0.1 - - [17/Oct/2018 18:23:08] "GET /home HTTP/1.1" 200 -
 127.0.0.1 - - [17/Oct/2018 18:23:15] "GET /logout HTTP/1.1" 302 -
 127.0.0.1 - - [17/Oct/2018 18:23:15] "GET /login HTTP/1.1" 200 -
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [17/Oct/2018 18:39:41] "GET /login HTTP/1.1" 200 -
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [17/Oct/2018 18:41:33] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [17/Oct/2018 18:41:39] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [17/Oct/2018 18:42:01] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [17/Oct/2018 18:42:04] "GET /home HTTP/1.1" 302 -
+127.0.0.1 - - [17/Oct/2018 18:42:04] "GET /login?next=http%3A%2F%2Flocalhost%3A5000%2Fhome HTTP/1.1" 200 -
+127.0.0.1 - - [17/Oct/2018 18:42:12] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [17/Oct/2018 18:42:17] "GET /gCallback?state=qWXaYILgEKFgQSW7eB1SNLOC2PoL6m&code=4/ewDD9GEuFc-a7DkPnVoprhZpUqqWkvqccDlt2m8dKZgyqa75ajLxHK_aMp8vgr6dIXBgV6GIFaBr-9DWNZYRzRk&scope=https://mail.google.com/+https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile HTTP/1.1" 302 -
+127.0.0.1 - - [17/Oct/2018 18:42:17] "GET /home HTTP/1.1" 200 -
+127.0.0.1 - - [17/Oct/2018 18:42:24] "GET /logout HTTP/1.1" 302 -
+127.0.0.1 - - [17/Oct/2018 18:42:24] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [17/Oct/2018 18:42:28] "GET /gCallback?state=GBDF9Dt5aRDtYXSrVwd7rtiELXEtHx&code=4/ewB_ASjCs9Yw9su2ovo_U9dCe4t489sWjnHoW2sb7LTRX_UrhLbwX9QpOnxeHVO9aAcSj88VSWjOdWMbAMGI0h0&scope=https://www.googleapis.com/auth/userinfo.profile+https://www.googleapis.com/auth/userinfo.email+https://mail.google.com/ HTTP/1.1" 302 -
+127.0.0.1 - - [17/Oct/2018 18:42:29] "GET /home HTTP/1.1" 200 -
+127.0.0.1 - - [17/Oct/2018 18:42:32] "GET /login HTTP/1.1" 302 -
+127.0.0.1 - - [17/Oct/2018 18:42:32] "GET /home HTTP/1.1" 200 -
+127.0.0.1 - - [17/Oct/2018 18:45:25] "GET /login HTTP/1.1" 302 -
+127.0.0.1 - - [17/Oct/2018 18:45:25] "GET /home HTTP/1.1" 200 -
+127.0.0.1 - - [17/Oct/2018 18:45:29] "GET /login?next=http%3A%2F%2Flocalhost%3A5000%2Fhome HTTP/1.1" 302 -
+127.0.0.1 - - [17/Oct/2018 18:45:30] "GET /home HTTP/1.1" 200 -
+127.0.0.1 - - [17/Oct/2018 18:45:33] "GET /logout HTTP/1.1" 302 -
+127.0.0.1 - - [17/Oct/2018 18:45:33] "GET /login HTTP/1.1" 200 -
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [17/Oct/2018 18:45:43] "GET /login HTTP/1.1" 200 -
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [17/Oct/2018 18:46:51] "GET /login HTTP/1.1" 200 -
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [17/Oct/2018 18:47:42] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [17/Oct/2018 18:47:47] "GET /gCallback?state=xPpw6yLVkETKbtY2SPdsB8Un6XPgxW&code=4/ewAxwHzBYbybHSKFyRXf0WNcD6csbfsaTeYMlIOQBPdotOYMBVu_RLg63xTlcZeqCM_6Gz7dQZdAoQ_XPydWrsc&scope=https://www.googleapis.com/auth/userinfo.profile+https://www.googleapis.com/auth/userinfo.email+https://mail.google.com/ HTTP/1.1" 302 -
+127.0.0.1 - - [17/Oct/2018 18:47:47] "GET /home HTTP/1.1" 200 -
+127.0.0.1 - - [17/Oct/2018 18:47:49] "GET /logout HTTP/1.1" 302 -
+127.0.0.1 - - [17/Oct/2018 18:47:50] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [17/Oct/2018 18:48:29] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [17/Oct/2018 18:48:49] "GET /gCallback?state=7KBx7Sv5HhUUejIeEeIJRMkC3fPCXj&code=4%2FewCXt3xvnU0D5OuBGeSGWJSVRY7BBHOSPlC8T5oWduxEpQRhtkBNaVerYWmjT0jVbBT-Q3LBom-9fkmTPv1P0kk&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fmail.google.com%2F HTTP/1.1" 302 -
+127.0.0.1 - - [17/Oct/2018 18:48:49] "GET /home HTTP/1.1" 200 -
+127.0.0.1 - - [17/Oct/2018 18:48:54] "GET /reports HTTP/1.1" 200 -
+127.0.0.1 - - [17/Oct/2018 18:48:58] "GET /home HTTP/1.1" 200 -
+127.0.0.1 - - [17/Oct/2018 18:49:02] "GET /logout HTTP/1.1" 302 -
+127.0.0.1 - - [17/Oct/2018 18:49:02] "GET /login HTTP/1.1" 200 -
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [17/Oct/2018 18:51:42] "GET /login HTTP/1.1" 200 -
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [17/Oct/2018 18:52:24] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [17/Oct/2018 18:53:20] "GET /login HTTP/1.1" 200 -
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [17/Oct/2018 18:53:26] "GET /login HTTP/1.1" 200 -
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [17/Oct/2018 18:54:57] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [17/Oct/2018 18:55:02] "GET /gCallback?state=mJoWeeG0NUNmqlEHnp2ty11Sef4I2h&code=4/ewDeZQoXAoKXTor5OQnCf51FX7VNApU8nnpSEJ-TFsi4lwO_e2idse-pn-P0TnJBJmRQVsjJsAnn5JvV7tiFqkU&scope=https://www.googleapis.com/auth/userinfo.email+https://mail.google.com/+https://www.googleapis.com/auth/userinfo.profile HTTP/1.1" 302 -
+127.0.0.1 - - [17/Oct/2018 18:55:02] "GET /home HTTP/1.1" 200 -
+127.0.0.1 - - [17/Oct/2018 18:55:04] "GET /logout HTTP/1.1" 302 -
+127.0.0.1 - - [17/Oct/2018 18:55:04] "GET /login HTTP/1.1" 200 -
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [17/Oct/2018 18:55:27] "GET /login HTTP/1.1" 200 -
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [17/Oct/2018 18:55:53] "GET /login HTTP/1.1" 200 -
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [17/Oct/2018 18:56:07] "GET /login HTTP/1.1" 200 -
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [17/Oct/2018 18:56:36] "GET /login HTTP/1.1" 200 -
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [17/Oct/2018 18:57:16] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [17/Oct/2018 18:57:18] "GET /login HTTP/1.1" 200 -
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [17/Oct/2018 18:58:13] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [17/Oct/2018 18:58:15] "GET /login HTTP/1.1" 200 -
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [17/Oct/2018 19:00:29] "GET /login HTTP/1.1" 200 -
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [17/Oct/2018 19:01:43] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [17/Oct/2018 19:01:59] "GET /gCallback?state=fsu2tOF7iSfbLRWt5C5GmMU06lCXr9&code=4/ewBej6E4zmrgjVjDmBegSRyywlrkUqVGboZoEZCTzOugbqxDR0SEED9sEdITA6njxq5UbUHCjrfn4r_yXMv1foM&scope=https://www.googleapis.com/auth/userinfo.email+https://mail.google.com/+https://www.googleapis.com/auth/userinfo.profile HTTP/1.1" 302 -
+127.0.0.1 - - [17/Oct/2018 19:01:59] "GET /home HTTP/1.1" 200 -
+127.0.0.1 - - [17/Oct/2018 19:02:03] "GET /reports HTTP/1.1" 200 -
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [17/Oct/2018 19:02:39] "GET /reports HTTP/1.1" 200 -
