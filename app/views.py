@@ -1,25 +1,21 @@
-from apiclient import errors
-from email.mime.text import MIMEText
-from email.mime.base import MIMEBase
-from email.mime.image import MIMEImage
-from email.mime.multipart import MIMEMultipart
 from flask import Blueprint, url_for, redirect, render_template, render_template_string, session, request, send_from_directory
 from flask import jsonify, json
-from sqlalchemy import and_, desc
-import datetime
-from Scripts.Hyrelabs.app.decorators import login_required
+from apiclient import errors
+from sqlalchemy import desc
+from email.mime.text import MIMEText
+
 from httplib2 import Http
 from googleapiclient.discovery import build
 from Lib import base64
-from Scripts.Hyrelabs.app.db import db
-from Scripts.Hyrelabs.app.models import User, Email
 from requests_oauthlib import OAuth2Session
-from oauth2client import file, client, tools
 from oauth2client.client import Credentials, OAuth2Credentials, Storage, AccessTokenCredentials
-from flask import logging
 from requests.exceptions import HTTPError
+
 from Scripts.Hyrelabs import config
 from Scripts.Hyrelabs.app.forms import EmailForm
+from Scripts.Hyrelabs.app.decorators import login_required
+from Scripts.Hyrelabs.app.db import db
+from Scripts.Hyrelabs.app.models import User, Email
 
 bp = Blueprint('views', __name__, url_prefix='/')
 
