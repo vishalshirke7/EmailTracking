@@ -1,21 +1,27 @@
-from flask import Blueprint, url_for, redirect, render_template, render_template_string, session, request, send_from_directory
+from flask import Blueprint
+from flask import url_for
+from flask import redirect
+from flask import render_template
+from flask import session
+from flask import request
+from flask import send_from_directory
 from flask import jsonify, json
+from requests.exceptions import HTTPError
+from Lib import base64
+
+from httplib2 import Http
+from googleapiclient.discovery import build
+from requests_oauthlib import OAuth2Session
+from oauth2client.client import Credentials, OAuth2Credentials, Storage, AccessTokenCredentials
 from apiclient import errors
 from sqlalchemy import desc
 from email.mime.text import MIMEText
 
-from httplib2 import Http
-from googleapiclient.discovery import build
-from Lib import base64
-from requests_oauthlib import OAuth2Session
-from oauth2client.client import Credentials, OAuth2Credentials, Storage, AccessTokenCredentials
-from requests.exceptions import HTTPError
-
-from Scripts.Hyrelabs import config
-from Scripts.Hyrelabs.app.forms import EmailForm
-from Scripts.Hyrelabs.app.decorators import login_required
-from Scripts.Hyrelabs.app.db import db
-from Scripts.Hyrelabs.app.models import User, Email
+import config
+from app.forms import EmailForm
+from app.decorators import login_required
+from .db import db
+from .models import User, Email
 
 bp = Blueprint('views', __name__, url_prefix='/')
 
@@ -42,7 +48,6 @@ def inject_user():
 @bp.route('/trackingimage/<path:path>/<path:emailid>')
 def send_image(path, emailid):
     """
-
     :param path: path to tracking image stored in static directory.
     :param emailid: unique id attached to track which email is requesting the tracking image
     :return: tracking image
@@ -58,7 +63,6 @@ def send_image(path, emailid):
 @login_required
 def reports():
     """
-
     :return: returns list of sent email for individual user.
     """
     userid = session['user_id']
@@ -87,9 +91,11 @@ def home():
             db.session.commit()
             msg_content = form.message.data
             emailid = email.id
-            msg_body = render_template('email_msg_body.html', msg_content=msg_content, emailid=emailid)
+            msg_body = render_template('email_msg_body.html', msg_content=msg_content,
+                                       emailid=emailid)
             service = create_service(userid)
-            msg = create_message(user.email, form.recipient.data, form.subject.data, msg_body)
+            msg = create_message(user.email, form.recipient.data,
+                                 form.subject.data, msg_body)
             me = 'me'
             send_message(service, me, msg)
             # emails = Email.query.filter_by(sender=userid)
@@ -120,25 +126,24 @@ def login():
 
 
 def create_message(sender, to, subject, message_text):
-  """Create a message for an email.
+    """Create a message for an email.
 
-  Args:
+    Args:
     sender: Email address of the sender.
     to: Email address of the receiver.
     subject: The subject of the email message.
     message_text: The text of the email message.
 
-  Returns:
+    Returns:
     An object containing a base64url encoded email object.
-  """
-  message = MIMEText(message_text, 'html')
-  message['to'] = to
-  message['from'] = sender
-  message['subject'] = subject
-  raw = base64.urlsafe_b64encode(message.as_bytes())
-  raw = raw.decode()
-  return {'raw': raw}
-# .as_string().encode()
+    """
+    message = MIMEText(message_text, 'html')
+    message['to'] = to
+    message['from'] = sender
+    message['subject'] = subject
+    raw = base64.urlsafe_b64encode(message.as_bytes())
+    raw = raw.decode()
+    return {'raw': raw}
 
 
 def send_message(service, user_id, message):

@@ -4,6 +4,8 @@ from flask_migrate import Migrate
 import os
 import logging
 
+from .models import db
+from app import views
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 
@@ -20,12 +22,8 @@ def create_app():
     logging.StreamHandler()
     logger.addHandler(handler)
     # print(logger.info())
-    from Scripts.Hyrelabs.app.models import db
     db.init_app(app)
     migrate = Migrate(app, db)
-
-    from Scripts.Hyrelabs.app import views
-
     app.register_blueprint(views.bp)
 
     return app
